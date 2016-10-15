@@ -1,0 +1,16 @@
+<md-bottom-sheet>
+
+  <md-subheader>
+    Contact: {{userShareCtrl.user.name}}
+  </md-subheader>
+
+  <md-list layout="row">
+    <md-item ng-repeat="item in userShareCtrl.items">
+      <md-button ng-click="userShareCtrl.performAction(item)">
+        <md-icon md-svg-icon="{{ item.icon }}"></md-icon>
+        {{item.name}}
+      </md-button>
+    </md-item>
+  </md-list>
+
+</md-bottom-sheet>

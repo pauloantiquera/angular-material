@@ -1,0 +1,22 @@
+{
+  "name": "angular-material",
+  "homepage": "https://github.com/pauloantiquera/angular-material",
+  "authors": [
+    "pauloantiquera <paulo@antiquera.net>"
+  ],
+  "description": "Angular Material Project",
+  "main": "index.html",
+  "keywords": [
+    "AngularJS",
+    "'Material",
+    "Design'"
+  ],
+  "license": "UNLICENSED",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

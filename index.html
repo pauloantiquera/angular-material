@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
+        <link rel="stylesheet" href="css/myApp.css">
+    </head>
+    <body ng-app="MyApp" layout="column">
+        <md-toolbar layout="row" class="md-toolbar-tools">
+            <h1>Angular Material Starter</h1>
+        </md-toolbar>
+
+        <div class="container" id="users" layout="row" flex ng-controller="usersController as usersCtrl">
+            <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
+                <md-list>
+                    <md-list-item ng-repeat="user in usersCtrl.users">
+                        <md-button ng-disabled="usersCtrl.isTheSelectedUser(user) || usersCtrl.allDisabled" ng-click="usersCtrl.select(user)">
+                            <md-icon md-svg-src="{{user.avatar}}" class="avatar"></md-icon>
+                            {{user.name}}
+                        </md-button>
+                    </md-list-item>
+                </md-list>
+            </md-sidenav>
+            <md-content id="content" flex>
+                <md-icon md-svg-src="{{usersCtrl.selectedUser.avatar}}" class="avatar"></md-icon>
+                <h2>{{usersCtrl.selectedUser.name}}</h2>
+                <p>{{usersCtrl.selectedUser.content}}</p>
+
+                <md-button class="md-fab md-fab-bottom-left" aria-label="Share" md-no-ink ng-click="usersCtrl.share(usersCtrl.selectedUser)">
+                    <md-icon md-svg-icon="share"></md-icon>
+                </md-button>                
+            </md-content>
+        </div>
+
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
+        <script src="bower_components/angular-aria/angular-aria.js"></script>
+        <script src="bower_components/angular-material/angular-material.js"></script>
+        <script src="app/myApp.module.js"></script>
+        <script src="app/myApp.config.js"></script>
+        <script src="app/users/users.module.js"></script>
+        <script src="app/users/users.resource.js"></script>
+        <script src="app/users/users.controller.js"></script>
+        <script src="app/users/userShare.controller.js"></script>
+    </body>
+</html>
