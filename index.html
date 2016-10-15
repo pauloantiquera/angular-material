@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Angular Material Starter</title>
         <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
         <link rel="stylesheet" href="css/myApp.css">
     </head>
-    <body ng-app="MyApp" layout="column">
+    <body ng-app="MyApp" layout="column"  ng-controller="usersController as usersCtrl">
         <md-toolbar layout="row" class="md-toolbar-tools">
+            <md-button class="menu" aria-label="Show User List" ng-click="usersCtrl.toggleList()" hide-gt-sm>
+                <md-icon md-svg-icon="menu"></md-icon>
+            </md-button>
             <h1>Angular Material Starter</h1>
         </md-toolbar>
 
-        <div class="container" id="users" layout="row" flex ng-controller="usersController as usersCtrl">
-            <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
+        <div class="container" id="users" layout="row" flex>
+            <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-4dp" md-component-id="usersList">
                 <md-list>
                     <md-list-item ng-repeat="user in usersCtrl.users">
                         <md-button ng-disabled="usersCtrl.isTheSelectedUser(user) || usersCtrl.allDisabled" ng-click="usersCtrl.select(user)">
@@ -25,7 +29,7 @@
                 <h2>{{usersCtrl.selectedUser.name}}</h2>
                 <p>{{usersCtrl.selectedUser.content}}</p>
 
-                <md-button class="md-fab md-fab-bottom-left" aria-label="Share" md-no-ink ng-click="usersCtrl.share(usersCtrl.selectedUser)">
+                <md-button class="md-fab md-fab-top-right" aria-label="Share with {{usersCtrl.selectedUser.name}}" md-no-ink ng-click="usersCtrl.share(usersCtrl.selectedUser)">
                     <md-icon md-svg-icon="share"></md-icon>
                 </md-button>                
             </md-content>

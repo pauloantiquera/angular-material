@@ -7,19 +7,21 @@
 
     usersController.$inject = [
         'usersResource',
-        '$mdBottomSheet'
+        '$mdBottomSheet',
+        '$mdSidenav'
     ];
 
-    function usersController(usersResource, $mdBottomSheet) {
+    function usersController(usersResource, $mdBottomSheet, $mdSidenav) {
         var vm = this;
 
         vm.users = [];
         vm.selectedUser = null;
+        vm.allDisabled = false;
 
         vm.isTheSelectedUser = isTheSelectedUser;
         vm.select = select;
         vm.share = share;
-        vm.allDisabled = false;
+        vm.toggleList = toggleList;
 
         function fillUsersList() {
             usersResource
@@ -40,6 +42,7 @@
 
         function select(user) {
             vm.selectedUser = user;
+            toggleList();
         }
 
         function createBottomSheetConfig() {
@@ -78,6 +81,10 @@
                         postHideShareBottomSheetAction();
                     }
                 );
+        }
+
+        function toggleList() {
+            $mdSidenav('usersList').toggle();
         }
         ////////////////        
 
